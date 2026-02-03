@@ -1,17 +1,31 @@
+import { Hero } from '@/components/sections/Hero';
+import { VenueInfo } from '@/components/sections/VenueInfo';
+import { EventDetails } from '@/components/sections/EventDetails';
+import { DressCode } from '@/components/sections/DressCode';
+
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <div className="section-container text-center">
-        <h1 className="heading-1 mb-4">
-          Our Wedding
-        </h1>
-        <p className="text-lg text-neutral-700">
-          Join us as we celebrate our special day
-        </p>
-        <p className="mt-2 text-neutral-600">
-          More details coming soon...
-        </p>
-      </div>
+      <Hero />
+      <VenueInfo />
+      <EventDetails />
+      <DressCode />
+
+      {/* Placeholder for Photo Gallery */}
+      <section id="photos" className="section-container bg-neutral-50">
+        <div className="text-center">
+          <h2 className="heading-2 text-neutral-900 mb-4">Our Memories</h2>
+          <p className="text-neutral-600">Photo gallery coming soon...</p>
+        </div>
+      </section>
+
+      {/* Placeholder for RSVP Form */}
+      <section id="rsvp" className="section-container bg-white">
+        <div className="text-center">
+          <h2 className="heading-2 text-neutral-900 mb-4">RSVP</h2>
+          <p className="text-neutral-600">RSVP form coming soon...</p>
+        </div>
+      </section>
     </main>
   );
 }
