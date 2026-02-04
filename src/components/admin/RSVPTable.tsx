@@ -2,7 +2,7 @@
 
 import { RSVP } from '@/lib/types';
 import { formatDistanceToNow } from 'date-fns';
-import { Mail, Phone, MessageSquare, CheckCircle, XCircle } from 'lucide-react';
+import { CheckCircle, XCircle } from 'lucide-react';
 
 interface RSVPTableProps {
   rsvps: RSVP[];
@@ -27,16 +27,13 @@ export function RSVPTable({ rsvps }: RSVPTableProps) {
                 Guest
               </th>
               <th className="px-6 py-3 text-left text-xs font-semibold text-neutral-600 uppercase tracking-wider">
-                Contact
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-neutral-600 uppercase tracking-wider">
                 Status
               </th>
               <th className="px-6 py-3 text-left text-xs font-semibold text-neutral-600 uppercase tracking-wider">
                 Guests
               </th>
               <th className="px-6 py-3 text-left text-xs font-semibold text-neutral-600 uppercase tracking-wider">
-                Details
+                Message
               </th>
               <th className="px-6 py-3 text-left text-xs font-semibold text-neutral-600 uppercase tracking-wider">
                 Submitted
@@ -48,29 +45,6 @@ export function RSVPTable({ rsvps }: RSVPTableProps) {
               <tr key={rsvp.id} className="hover:bg-neutral-50 transition">
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="font-medium text-neutral-900">{rsvp.guest_name}</div>
-                </td>
-                <td className="px-6 py-4">
-                  <div className="space-y-1 text-sm text-neutral-600">
-                    {rsvp.email && (
-                      <div className="flex items-center gap-2">
-                        <Mail className="w-4 h-4" />
-                        <a href={`mailto:${rsvp.email}`} className="hover:text-primary-600">
-                          {rsvp.email}
-                        </a>
-                      </div>
-                    )}
-                    {rsvp.phone && (
-                      <div className="flex items-center gap-2">
-                        <Phone className="w-4 h-4" />
-                        <a href={`tel:${rsvp.phone}`} className="hover:text-primary-600">
-                          {rsvp.phone}
-                        </a>
-                      </div>
-                    )}
-                    {!rsvp.email && !rsvp.phone && (
-                      <span className="text-neutral-400">No contact info</span>
-                    )}
-                  </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   {rsvp.attending ? (
@@ -91,26 +65,11 @@ export function RSVPTable({ rsvps }: RSVPTableProps) {
                   </span>
                 </td>
                 <td className="px-6 py-4 max-w-xs">
-                  <div className="space-y-2 text-sm">
-                    {rsvp.dietary_restrictions && (
-                      <div>
-                        <span className="font-medium text-neutral-700">Dietary:</span>
-                        <p className="text-neutral-600 line-clamp-2">{rsvp.dietary_restrictions}</p>
-                      </div>
-                    )}
-                    {rsvp.message && (
-                      <div>
-                        <div className="flex items-center gap-1 text-neutral-700 mb-1">
-                          <MessageSquare className="w-3 h-3" />
-                          <span className="font-medium">Message:</span>
-                        </div>
-                        <p className="text-neutral-600 line-clamp-2">{rsvp.message}</p>
-                      </div>
-                    )}
-                    {!rsvp.dietary_restrictions && !rsvp.message && (
-                      <span className="text-neutral-400">No additional details</span>
-                    )}
-                  </div>
+                  {rsvp.message ? (
+                    <p className="text-neutral-700 text-sm line-clamp-2">{rsvp.message}</p>
+                  ) : (
+                    <span className="text-neutral-400 text-sm">-</span>
+                  )}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-neutral-600">
                   {formatDistanceToNow(new Date(rsvp.created_at), { addSuffix: true })}

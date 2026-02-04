@@ -26,8 +26,7 @@ export function DashboardClient({ rsvps, userEmail }: DashboardClientProps) {
 
   // Filter RSVPs based on search and filter
   const filteredRSVPs = rsvps.filter((rsvp) => {
-    const matchesSearch = rsvp.guest_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (rsvp.email?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false);
+    const matchesSearch = rsvp.guest_name.toLowerCase().includes(searchQuery.toLowerCase());
 
     const matchesFilter =
       filterStatus === 'all' ||
@@ -76,7 +75,7 @@ export function DashboardClient({ rsvps, userEmail }: DashboardClientProps) {
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-400" />
                 <input
                   type="text"
-                  placeholder="Search by name or email..."
+                  placeholder="Search by name..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full pl-10 pr-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none"

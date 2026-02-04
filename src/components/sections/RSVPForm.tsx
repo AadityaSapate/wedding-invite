@@ -10,13 +10,10 @@ import { Loader2 } from 'lucide-react';
 
 const rsvpSchema = z.object({
   guest_name: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Please enter a valid email').optional().or(z.literal('')),
-  phone: z.string().optional(),
   attending: z.enum(['yes', 'no'], {
     message: 'Please select whether you can attend',
   }),
   guest_count: z.number().min(1).max(10).default(1),
-  dietary_restrictions: z.string().optional(),
   message: z.string().optional(),
 });
 
@@ -47,9 +44,6 @@ export function RSVPForm() {
       const formData = {
         ...data,
         attending: data.attending === 'yes',
-        email: data.email || undefined,
-        phone: data.phone || undefined,
-        dietary_restrictions: data.dietary_restrictions || undefined,
         message: data.message || undefined,
       };
 
@@ -100,43 +94,6 @@ export function RSVPForm() {
             {errors.guest_name && (
               <p className="mt-1 text-sm text-red-600">{errors.guest_name.message}</p>
             )}
-          </div>
-
-          {/* Email */}
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-semibold text-neutral-700 mb-2"
-            >
-              Email
-            </label>
-            <input
-              {...register('email')}
-              type="email"
-              id="email"
-              className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition"
-              placeholder="your@email.com"
-            />
-            {errors.email && (
-              <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
-            )}
-          </div>
-
-          {/* Phone */}
-          <div>
-            <label
-              htmlFor="phone"
-              className="block text-sm font-semibold text-neutral-700 mb-2"
-            >
-              Phone Number
-            </label>
-            <input
-              {...register('phone')}
-              type="tel"
-              id="phone"
-              className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition"
-              placeholder="(123) 456-7890"
-            />
           </div>
 
           {/* Attending */}
@@ -193,25 +150,6 @@ export function RSVPForm() {
                   </option>
                 ))}
               </select>
-            </div>
-          )}
-
-          {/* Dietary Restrictions - only show if attending */}
-          {attending === 'yes' && (
-            <div>
-              <label
-                htmlFor="dietary_restrictions"
-                className="block text-sm font-semibold text-neutral-700 mb-2"
-              >
-                Dietary Restrictions
-              </label>
-              <textarea
-                {...register('dietary_restrictions')}
-                id="dietary_restrictions"
-                rows={3}
-                className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition resize-none"
-                placeholder="Please let us know of any dietary restrictions or allergies"
-              />
             </div>
           )}
 

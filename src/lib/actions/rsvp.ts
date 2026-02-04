@@ -11,11 +11,8 @@ export async function submitRSVP(data: RSVPFormData): Promise<{ success: boolean
       .from('rsvps')
       .insert({
         guest_name: data.guest_name,
-        email: data.email || null,
-        phone: data.phone || null,
         attending: data.attending,
         guest_count: data.attending ? data.guest_count : 0,
-        dietary_restrictions: data.dietary_restrictions || null,
         message: data.message || null,
       });
 
