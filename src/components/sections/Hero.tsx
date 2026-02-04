@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { siteConfig } from '@/config/site';
-import { formatDate, getTimeUntilDate } from '@/lib/utils';
+import { getTimeUntilDate } from '@/lib/utils';
 
 export function Hero() {
   const [timeUntil, setTimeUntil] = useState(getTimeUntilDate(siteConfig.date));
@@ -32,7 +32,7 @@ export function Hero() {
           {/* Date */}
           <div className="space-y-2">
             <p className="text-2xl font-serif text-neutral-800">
-              {formatDate(siteConfig.date)}
+              February 24-25, 2026
             </p>
             <p className="text-lg text-neutral-600">
               {siteConfig.venue.name}

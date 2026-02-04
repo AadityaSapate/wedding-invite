@@ -14,9 +14,9 @@ export function VenueInfo() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 items-start">
+        <div className="flex justify-center">
           {/* Venue Details */}
-          <div className="space-y-6">
+          <div className="max-w-md w-full">
             <div className="bg-neutral-50 p-8 rounded-lg">
               <div className="flex items-start gap-3 mb-4">
                 <MapPin className="w-6 h-6 text-primary-500 flex-shrink-0 mt-1" />
@@ -39,21 +39,6 @@ export function VenueInfo() {
                 Get Directions
               </a>
             </div>
-
-          </div>
-
-          {/* Map */}
-          <div className="h-80 md:h-full min-h-[320px] bg-neutral-100 rounded-lg overflow-hidden shadow-md">
-            <iframe
-              src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyD80CRynv1UW-q5650f7DwdZOvty9u5c9Q&q=${encodeURIComponent(siteConfig.venue.address)}`}
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="w-full h-full"
-            ></iframe>
           </div>
         </div>
       </div>

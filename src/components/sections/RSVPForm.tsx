@@ -14,6 +14,7 @@ const rsvpSchema = z.object({
     message: 'Please select whether you can attend',
   }),
   guest_count: z.number().min(1).max(10).default(1),
+  needs_accommodation: z.boolean().default(true),
   message: z.string().optional(),
 });
 
@@ -31,6 +32,7 @@ export function RSVPForm() {
     resolver: zodResolver(rsvpSchema),
     defaultValues: {
       guest_count: 1,
+      needs_accommodation: true,
     },
   });
 
@@ -132,25 +134,46 @@ export function RSVPForm() {
 
           {/* Guest Count - only show if attending */}
           {attending === 'yes' && (
-            <div>
-              <label
-                htmlFor="guest_count"
-                className="block text-sm font-semibold text-neutral-700 mb-2"
-              >
-                Number of Guests
-              </label>
-              <select
-                {...register('guest_count', { valueAsNumber: true })}
-                id="guest_count"
-                className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition"
-              >
-                {[1, 2, 3, 4, 5].map((num) => (
-                  <option key={num} value={num}>
-                    {num} {num === 1 ? 'Guest' : 'Guests'}
-                  </option>
-                ))}
-              </select>
-            </div>
+            <>
+              <div>
+                <label
+                  htmlFor="guest_count"
+                  className="block text-sm font-semibold text-neutral-700 mb-2"
+                >
+                  Number of Guests
+                </label>
+                <select
+                  {...register('guest_count', { valueAsNumber: true })}
+                  id="guest_count"
+                  className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition"
+                >
+                  {[1, 2, 3, 4, 5].map((num) => (
+                    <option key={num} value={num}>
+                      {num} {num === 1 ? 'Guest' : 'Guests'}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Accommodation Toggle */}
+              <div className="flex items-start gap-3">
+                <input
+                  {...register('needs_accommodation')}
+                  type="checkbox"
+                  id="needs_accommodation"
+                  className="mt-1 w-5 h-5 text-primary-500 border-neutral-300 rounded focus:ring-2 focus:ring-primary-500"
+                />
+                <label
+                  htmlFor="needs_accommodation"
+                  className="text-sm font-semibold text-neutral-700 cursor-pointer"
+                >
+                  I need accommodation
+                  <p className="text-neutral-600 font-normal mt-1">
+                    We&apos;ll arrange accommodations
+                  </p>
+                </label>
+              </div>
+            </>
           )}
 
           {/* Message */}

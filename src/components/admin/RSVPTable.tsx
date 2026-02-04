@@ -2,7 +2,7 @@
 
 import { RSVP } from '@/lib/types';
 import { formatDistanceToNow } from 'date-fns';
-import { CheckCircle, XCircle } from 'lucide-react';
+import { CheckCircle, XCircle, Home } from 'lucide-react';
 
 interface RSVPTableProps {
   rsvps: RSVP[];
@@ -31,6 +31,9 @@ export function RSVPTable({ rsvps }: RSVPTableProps) {
               </th>
               <th className="px-6 py-3 text-left text-xs font-semibold text-neutral-600 uppercase tracking-wider">
                 Guests
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-neutral-600 uppercase tracking-wider">
+                Accommodation
               </th>
               <th className="px-6 py-3 text-left text-xs font-semibold text-neutral-600 uppercase tracking-wider">
                 Message
@@ -63,6 +66,18 @@ export function RSVPTable({ rsvps }: RSVPTableProps) {
                   <span className="text-neutral-900 font-medium">
                     {rsvp.attending ? rsvp.guest_count : '-'}
                   </span>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  {rsvp.attending && rsvp.needs_accommodation ? (
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">
+                      <Home className="w-3 h-3" />
+                      Needed
+                    </span>
+                  ) : rsvp.attending ? (
+                    <span className="text-neutral-400 text-xs">Not needed</span>
+                  ) : (
+                    <span className="text-neutral-400 text-xs">-</span>
+                  )}
                 </td>
                 <td className="px-6 py-4 max-w-xs">
                   {rsvp.message ? (

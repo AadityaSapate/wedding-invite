@@ -4,6 +4,7 @@ export interface RSVP {
   guest_name: string;
   attending: boolean;
   guest_count: number;
+  needs_accommodation: boolean;
   message?: string;
   updated_at?: string;
 }
@@ -12,6 +13,7 @@ export interface RSVPFormData {
   guest_name: string;
   attending: boolean;
   guest_count: number;
+  needs_accommodation: boolean;
   message?: string;
 }
 

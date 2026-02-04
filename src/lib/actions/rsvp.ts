@@ -13,6 +13,7 @@ export async function submitRSVP(data: RSVPFormData): Promise<{ success: boolean
         guest_name: data.guest_name,
         attending: data.attending,
         guest_count: data.attending ? data.guest_count : 0,
+        needs_accommodation: data.attending ? data.needs_accommodation : false,
         message: data.message || null,
       });
 
