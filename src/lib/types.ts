@@ -30,6 +30,7 @@ export interface SiteConfig {
     time: string;
     title: string;
     description?: string;
+    dressCode?: string;
   }>;
   dressCode: {
     title: string;

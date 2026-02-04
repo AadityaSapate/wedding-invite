@@ -1,5 +1,5 @@
 import { siteConfig } from '@/config/site';
-import { Clock } from 'lucide-react';
+import { Clock, Shirt } from 'lucide-react';
 
 export function EventDetails() {
   return (
@@ -36,9 +36,16 @@ export function EventDetails() {
                     </span>
                   </div>
                   {event.description && (
-                    <p className="text-neutral-700">
+                    <p className="text-neutral-700 mb-3">
                       {event.description}
                     </p>
+                  )}
+                  {event.dressCode && (
+                    <div className="flex items-center gap-2 mt-3 pt-3 border-t border-neutral-100">
+                      <Shirt className="w-4 h-4 text-sage-500" />
+                      <span className="text-sm font-medium text-neutral-600">Dress Code:</span>
+                      <span className="text-sm text-sage-600 font-semibold">{event.dressCode}</span>
+                    </div>
                   )}
                 </div>
               </div>
