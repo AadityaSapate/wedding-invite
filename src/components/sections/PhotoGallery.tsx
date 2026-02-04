@@ -46,16 +46,6 @@ export function PhotoGallery() {
           ))}
         </div>
 
-        {/* Placeholder message if images don't exist yet */}
-        <div className="mt-12 text-center bg-white p-8 rounded-lg">
-          <p className="text-neutral-600">
-            <span className="font-semibold">Note:</span> Add your photos to{' '}
-            <code className="bg-neutral-100 px-2 py-1 rounded text-sm">
-              public/images/gallery/
-            </code>
-            {' '}to populate the gallery
-          </p>
-        </div>
       </div>
     </section>
   );

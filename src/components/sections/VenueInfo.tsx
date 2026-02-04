@@ -40,17 +40,12 @@ export function VenueInfo() {
               </a>
             </div>
 
-            <div className="bg-sage-50 p-6 rounded-lg">
-              <p className="text-sm text-neutral-700">
-                <span className="font-semibold">Parking:</span> Complimentary valet parking will be available for all guests.
-              </p>
-            </div>
           </div>
 
           {/* Map */}
           <div className="h-80 md:h-full min-h-[320px] bg-neutral-100 rounded-lg overflow-hidden shadow-md">
             <iframe
-              src={`https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=${encodeURIComponent(siteConfig.venue.address)}`}
+              src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyD80CRynv1UW-q5650f7DwdZOvty9u5c9Q&q=${encodeURIComponent(siteConfig.venue.address)}`}
               width="100%"
               height="100%"
               style={{ border: 0 }}

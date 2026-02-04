@@ -26,14 +26,14 @@ export interface SiteConfig {
     address: string;
     mapsUrl: string;
   };
-  events: Array<{
-    time: string;
-    title: string;
-    description?: string;
-    dressCode?: string;
+  days: Array<{
+    day: string;
+    date: string;
+    events: Array<{
+      time: string;
+      title: string;
+      description?: string;
+      dressCode?: string;
+    }>;
   }>;
-  dressCode: {
-    title: string;
-    description: string;
-  };
 }
