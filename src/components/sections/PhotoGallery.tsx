@@ -5,28 +5,28 @@ import { Heart } from 'lucide-react';
 const photos = [
   {
     id: 1,
-    src: '/images/gallery/Nagpur 2022.jpeg',
+    src: '/images/gallery/nagpur-2022.jpeg',
     alt: 'We Started in Nagpur in 2022',
     caption: 'Nagpur 2022',
     span: '' // Square photo - standard size
   },
   {
     id: 2,
-    src: '/images/gallery/Gurugram 2023.jpeg',
+    src: '/images/gallery/gurugram-2023.jpeg',
     alt: 'Our journey continued in Gurugram 2023',
     caption: 'Gurugram 2023',
     span: 'md:row-span-2' // Portrait photo - taller
   },
   {
     id: 3,
-    src: '/images/gallery/Banglore 2024.jpeg',
+    src: '/images/gallery/banglore-2024.jpeg',
     alt: 'Together in Banglore 2024',
     caption: 'Banglore 2024',
     span: 'md:col-span-2' // Landscape photo - wider
   },
   {
     id: 4,
-    src: '/images/gallery/Nagpur 2025.jpeg',
+    src: '/images/gallery/nagpur-2025.jpeg',
     alt: 'Confirmation from families in 2025',
     caption: 'Families United 2025',
     span: 'md:col-span-2 md:row-span-2' // Large photo - emphasis on final milestone
