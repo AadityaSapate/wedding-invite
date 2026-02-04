@@ -1,14 +1,36 @@
 import Image from 'next/image';
 import { Heart } from 'lucide-react';
 
-// Placeholder images - replace with actual wedding photos
+// Our journey together
 const photos = [
-  { id: 1, src: '/images/gallery/photo1.jpg', alt: 'Wedding photo 1', span: 'md:col-span-2' },
-  { id: 2, src: '/images/gallery/photo2.jpg', alt: 'Wedding photo 2', span: '' },
-  { id: 3, src: '/images/gallery/photo3.jpg', alt: 'Wedding photo 3', span: '' },
-  { id: 4, src: '/images/gallery/photo4.jpg', alt: 'Wedding photo 4', span: 'md:row-span-2' },
-  { id: 5, src: '/images/gallery/photo5.jpg', alt: 'Wedding photo 5', span: 'md:col-span-2' },
-  { id: 6, src: '/images/gallery/photo6.jpg', alt: 'Wedding photo 6', span: '' },
+  {
+    id: 1,
+    src: '/images/gallery/Nagpur 2022.jpeg',
+    alt: 'We Started in Nagpur in 2022',
+    caption: 'Nagpur 2022',
+    span: '' // Square photo - standard size
+  },
+  {
+    id: 2,
+    src: '/images/gallery/Gurugram 2023.jpeg',
+    alt: 'Our journey continued in Gurugram 2023',
+    caption: 'Gurugram 2023',
+    span: 'md:row-span-2' // Portrait photo - taller
+  },
+  {
+    id: 3,
+    src: '/images/gallery/Banglore 2024.jpeg',
+    alt: 'Together in Banglore 2024',
+    caption: 'Banglore 2024',
+    span: 'md:col-span-2' // Landscape photo - wider
+  },
+  {
+    id: 4,
+    src: '/images/gallery/Nagpur 2025.jpeg',
+    alt: 'Confirmation from families in 2025',
+    caption: 'Families United 2025',
+    span: 'md:col-span-2 md:row-span-2' // Large photo - emphasis on final milestone
+  },
 ];
 
 export function PhotoGallery() {
@@ -29,7 +51,7 @@ export function PhotoGallery() {
         </div>
 
         {/* Masonry Grid Layout */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[200px]">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[240px]">
           {photos.map((photo) => (
             <div
               key={photo.id}
@@ -40,8 +62,14 @@ export function PhotoGallery() {
                 alt={photo.alt}
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
-                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 50vw, 25vw"
               />
+              {/* Caption Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                <p className="text-white font-serif text-lg md:text-xl font-semibold p-4 w-full">
+                  {photo.caption}
+                </p>
+              </div>
             </div>
           ))}
         </div>
