@@ -1,5 +1,5 @@
 import { siteConfig } from '@/config/site';
-import { Clock, Shirt, Calendar } from 'lucide-react';
+import { Clock, Shirt, Calendar, MapPin } from 'lucide-react';
 
 export function EventDetails() {
   return (
@@ -12,6 +12,31 @@ export function EventDetails() {
           <p className="text-lg text-neutral-600">
             Join us for two days of beautiful traditions and joyful celebrations
           </p>
+        </div>
+
+        {/* Venue Info */}
+        <div className="max-w-xl mx-auto mb-12">
+          <div className="bg-gradient-to-br from-primary-50 to-white border-2 border-primary-100 rounded-2xl p-6 shadow-lg">
+            <div className="flex items-start gap-3 mb-4">
+              <MapPin className="w-5 h-5 text-primary-500 flex-shrink-0 mt-1" />
+              <div className="flex-1">
+                <h3 className="text-lg font-serif font-bold text-neutral-900 mb-1">
+                  {siteConfig.venue.name}
+                </h3>
+                <p className="text-sm text-neutral-700 mb-3">
+                  {siteConfig.venue.address}
+                </p>
+                <a
+                  href={siteConfig.venue.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-primary-500 hover:bg-primary-600 text-white text-center font-semibold px-5 py-2 rounded-lg transition-colors duration-200 text-sm"
+                >
+                  Get Directions
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="space-y-12">
