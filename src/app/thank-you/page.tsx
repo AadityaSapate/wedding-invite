@@ -23,9 +23,6 @@ export default function ThankYouPage() {
           <p className="text-lg text-neutral-600">
             We&apos;re so excited to celebrate with you!
           </p>
-          <p className="text-neutral-600">
-            You should receive a confirmation email shortly.
-          </p>
         </div>
 
         <div className="bg-white rounded-lg p-8 shadow-sm mb-8">
@@ -33,10 +30,6 @@ export default function ThankYouPage() {
             What&apos;s Next?
           </h2>
           <ul className="text-left space-y-3 text-neutral-700">
-            <li className="flex items-start gap-3">
-              <span className="text-primary-500 font-bold">•</span>
-              <span>Check your email for event details and updates</span>
-            </li>
             <li className="flex items-start gap-3">
               <span className="text-primary-500 font-bold">•</span>
               <span>Mark your calendar for the big day</span>
