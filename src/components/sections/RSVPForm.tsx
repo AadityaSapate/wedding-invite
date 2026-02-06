@@ -27,6 +27,7 @@ export function RSVPForm() {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(rsvpSchema),
@@ -65,87 +66,68 @@ export function RSVPForm() {
   };
 
   return (
-    <section id="rsvp" className="section-container bg-white">
-      <div className="max-w-2xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="heading-2 text-neutral-900 mb-4">RSVP</h2>
-          <p className="text-lg text-neutral-600">
-            Please let us know if you can join us by filling out the form below
-          </p>
-        </div>
+    <section id="rsvp" className="py-32 px-6 bg-white">
+      <div className="max-w-sm mx-auto text-center">
+        <p className="text-neutral-600 text-xs uppercase tracking-[0.3em] mb-4">
+          Kindly Respond
+        </p>
+        <h2 className="font-serif text-3xl md:text-4xl text-neutral-900 mb-12">
+          Will you join us?
+        </h2>
 
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="bg-neutral-50 rounded-2xl p-8 md:p-12 space-y-6"
-        >
-          {/* Name */}
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-10">
+          {/* Name Input - Minimal underline style */}
           <div>
-            <label
-              htmlFor="guest_name"
-              className="block text-sm font-semibold text-neutral-700 mb-2"
-            >
-              Full Name <span className="text-primary-500">*</span>
-            </label>
             <input
               {...register('guest_name')}
               type="text"
-              id="guest_name"
-              className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition"
               placeholder="Your name"
+              className="w-full bg-transparent border-b border-neutral-300 py-3 text-center text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-primary-500 transition-colors"
             />
             {errors.guest_name && (
-              <p className="mt-1 text-sm text-red-600">{errors.guest_name.message}</p>
+              <p className="mt-2 text-sm text-red-600">{errors.guest_name.message}</p>
             )}
           </div>
 
-          {/* Attending */}
+          {/* Attending - Text-based buttons */}
           <div>
-            <label className="block text-sm font-semibold text-neutral-700 mb-3">
-              Will you be attending? <span className="text-primary-500">*</span>
-            </label>
-            <div className="flex gap-4">
-              <label className="flex-1">
-                <input
-                  {...register('attending')}
-                  type="radio"
-                  value="yes"
-                  className="peer sr-only"
-                />
-                <div className="px-6 py-4 border-2 border-neutral-300 rounded-lg cursor-pointer peer-checked:border-primary-500 peer-checked:bg-primary-50 transition text-center font-semibold">
-                  Joyfully Accept
-                </div>
-              </label>
-              <label className="flex-1">
-                <input
-                  {...register('attending')}
-                  type="radio"
-                  value="no"
-                  className="peer sr-only"
-                />
-                <div className="px-6 py-4 border-2 border-neutral-300 rounded-lg cursor-pointer peer-checked:border-neutral-400 peer-checked:bg-neutral-100 transition text-center font-semibold">
-                  Regretfully Decline
-                </div>
-              </label>
+            <div className="flex justify-center items-center gap-8 mb-2">
+              <button
+                type="button"
+                onClick={() => setValue('attending', 'yes')}
+                className={`font-serif text-lg transition-all ${
+                  attending === 'yes'
+                    ? 'text-primary-500'
+                    : 'text-neutral-400 hover:text-neutral-900'
+                }`}
+              >
+                Joyfully Accept
+              </button>
+              <span className="text-neutral-300">|</span>
+              <button
+                type="button"
+                onClick={() => setValue('attending', 'no')}
+                className={`font-serif text-lg transition-all ${
+                  attending === 'no'
+                    ? 'text-primary-500'
+                    : 'text-neutral-400 hover:text-neutral-900'
+                }`}
+              >
+                Regretfully Decline
+              </button>
             </div>
             {errors.attending && (
-              <p className="mt-1 text-sm text-red-600">{errors.attending.message}</p>
+              <p className="mt-2 text-sm text-red-600">{errors.attending.message}</p>
             )}
           </div>
 
-          {/* Guest Count - only show if attending */}
+          {/* Guest Count and Accommodation - only show if attending */}
           {attending === 'yes' && (
-            <>
+            <div className="space-y-6 pt-4">
               <div>
-                <label
-                  htmlFor="guest_count"
-                  className="block text-sm font-semibold text-neutral-700 mb-2"
-                >
-                  Number of Guests
-                </label>
                 <select
                   {...register('guest_count', { valueAsNumber: true })}
-                  id="guest_count"
-                  className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition"
+                  className="w-full bg-transparent border-b border-neutral-300 py-3 text-center text-neutral-900 focus:outline-none focus:border-primary-500 transition-colors"
                 >
                   {[1, 2, 3, 4, 5].map((num) => (
                     <option key={num} value={num}>
@@ -155,64 +137,53 @@ export function RSVPForm() {
                 </select>
               </div>
 
-              {/* Accommodation Toggle */}
-              <div className="flex items-start gap-3">
+              <div className="flex items-center justify-center gap-3">
                 <input
                   {...register('needs_accommodation')}
                   type="checkbox"
                   id="needs_accommodation"
-                  className="mt-1 w-5 h-5 text-primary-500 border-neutral-300 rounded focus:ring-2 focus:ring-primary-500"
+                  className="w-4 h-4 text-primary-500 border-neutral-300 rounded focus:ring-2 focus:ring-primary-500"
                 />
                 <label
                   htmlFor="needs_accommodation"
-                  className="text-sm font-semibold text-neutral-700 cursor-pointer"
+                  className="text-sm text-neutral-600 cursor-pointer"
                 >
                   I need accommodation
-                  <p className="text-neutral-600 font-normal mt-1">
-                    We&apos;ll arrange accommodations
-                  </p>
                 </label>
               </div>
-            </>
+            </div>
           )}
 
           {/* Message */}
           <div>
-            <label
-              htmlFor="message"
-              className="block text-sm font-semibold text-neutral-700 mb-2"
-            >
-              Message to the Couple
-            </label>
             <textarea
               {...register('message')}
-              id="message"
-              rows={4}
-              className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition resize-none"
+              rows={3}
               placeholder="Share your well wishes or a favorite memory..."
+              className="w-full bg-transparent border-b border-neutral-300 py-3 text-center text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-primary-500 transition-colors resize-none"
             />
           </div>
 
           {/* Error Message */}
           {error && (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+            <div className="bg-red-50 text-red-600 px-4 py-3 rounded text-sm">
               {error}
             </div>
           )}
 
-          {/* Submit Button */}
+          {/* Submit Button - Minimal style */}
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-primary-500 hover:bg-primary-600 disabled:bg-neutral-400 text-white font-semibold px-8 py-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+            className="text-xs uppercase tracking-[0.2em] text-neutral-900 border-b border-neutral-900 pb-1 hover:text-primary-500 hover:border-primary-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? (
-              <>
-                <Loader2 className="w-5 h-5 animate-spin" />
-                Submitting...
-              </>
+              <span className="flex items-center justify-center gap-2">
+                <Loader2 className="w-4 h-4 animate-spin" />
+                Sending...
+              </span>
             ) : (
-              'Submit RSVP'
+              'Send Response'
             )}
           </button>
         </form>

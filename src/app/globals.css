@@ -81,4 +81,62 @@
     animation: float 3s ease-in-out infinite;
     animation-delay: 1s;
   }
+
+  @keyframes float-reverse {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(-5px, -15px);
+    }
+  }
+
+  @keyframes scroll-hint {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(6px);
+    }
+  }
+
+  @keyframes mesh-1 {
+    0%, 100% {
+      background: radial-gradient(circle at 20% 80%, rgba(var(--primary-rgb, 168, 85, 247) / 0.3) 0%, transparent 50%);
+    }
+    33% {
+      background: radial-gradient(circle at 80% 20%, rgba(var(--primary-rgb, 168, 85, 247) / 0.3) 0%, transparent 50%);
+    }
+    66% {
+      background: radial-gradient(circle at 40% 40%, rgba(var(--primary-rgb, 168, 85, 247) / 0.3) 0%, transparent 50%);
+    }
+  }
+
+  @keyframes mesh-2 {
+    0%, 100% {
+      background: radial-gradient(circle at 70% 30%, rgba(var(--primary-rgb, 168, 85, 247) / 0.4) 0%, transparent 40%);
+    }
+    33% {
+      background: radial-gradient(circle at 30% 70%, rgba(var(--primary-rgb, 168, 85, 247) / 0.4) 0%, transparent 40%);
+    }
+    66% {
+      background: radial-gradient(circle at 60% 60%, rgba(var(--primary-rgb, 168, 85, 247) / 0.4) 0%, transparent 40%);
+    }
+  }
+
+  .animate-float-reverse {
+    animation: float-reverse 6s ease-in-out infinite;
+  }
+
+  .animate-scroll-hint {
+    animation: scroll-hint 1.5s ease-in-out infinite;
+  }
+
+  .animate-mesh-1 {
+    animation: mesh-1 15s linear infinite;
+  }
+
+  .animate-mesh-2 {
+    animation: mesh-2 20s linear infinite;
+  }
 }

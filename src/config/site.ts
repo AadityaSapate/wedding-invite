@@ -18,15 +18,15 @@ export const siteConfig: SiteConfig = {
       events: [
         {
           time: "11:00 AM",
-          title: "Haldi",
-          description: "A traditional ceremony where turmeric paste is applied for blessings",
-          dressCode: "Yellow or Light Colored Traditional Attire"
+          title: "Haldi Carnival",
+          description: "A vibrant floral haldi celebration filled with dhol beats, games, laughter, and endless fun as we kick off the festivities.",
+          dressCode: "Shades of Pink"
         },
         {
           time: "7:00 PM",
           title: "Sangeet",
-          description: "An evening of music, dance, and celebration with family and friends",
-          dressCode: "Indian Ethnic Wear - Festive Colors"
+          description: "An evening of music, dance, and joyful performances as family and friends come together to celebrate love and togetherness.",
+          dressCode: "Darker shades with glitter & glam"
         }
       ]
     },
@@ -37,13 +37,13 @@ export const siteConfig: SiteConfig = {
         {
           time: "5:00 PM",
           title: "Shaadi",
-          description: "Join us as we exchange our vows in a traditional wedding ceremony",
-          dressCode: "Traditional Indian Formal Wear"
+          description: "Join us as we exchange our vows in a traditional wedding ceremony, surrounded by love, rituals, and blessings.",
+          dressCode: "Indian Ethnic Wear / Indo-Western"
         },
         {
           time: "7:00 PM",
           title: "Reception",
-          description: "Dinner, dancing, and celebration to mark the beginning of our journey together",
+          description: "An elegant evening of dinner, dancing, and celebration as we begin our journey together.",
           dressCode: "Indian Ethnic Wear / Indo-Western"
         }
       ]
