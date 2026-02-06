@@ -38,13 +38,13 @@ export const siteConfig: SiteConfig = {
           time: "5:00 PM",
           title: "Shaadi",
           description: "Join us as we exchange our vows in a traditional wedding ceremony, surrounded by love, rituals, and blessings.",
-          dressCode: "Indian Ethnic Wear / Indo-Western"
+          dressCode: "Wear what makes you shine!"
         },
         {
           time: "7:00 PM",
           title: "Reception",
           description: "An elegant evening of dinner, dancing, and celebration as we begin our journey together.",
-          dressCode: "Indian Ethnic Wear / Indo-Western"
+          dressCode: "Wear what makes you shine!"
         }
       ]
     }

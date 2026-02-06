@@ -55,7 +55,7 @@ export function Hero() {
 
         <div className="mb-16">
           <p className="text-sm tracking-[0.25em] uppercase text-neutral-500 mb-6">
-            Request the pleasure of your company
+            Are Getting Married
           </p>
           <div className="flex items-center justify-center gap-4 text-neutral-900">
             <span className="w-12 h-px bg-neutral-300" />
