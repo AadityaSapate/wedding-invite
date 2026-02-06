@@ -3,16 +3,32 @@
 import { useEffect, useState } from 'react';
 
 export function SaveTheDateLoader() {
+  const [displayedText, setDisplayedText] = useState('');
   const [fadeOut, setFadeOut] = useState(false);
+  const fullText = 'Save the Date';
 
   useEffect(() => {
-    // Start fade out after 2.5 seconds
+    // Typewriter effect
+    let currentIndex = 1;
+    const typewriterInterval = setInterval(() => {
+      if (currentIndex <= fullText.length) {
+        setDisplayedText(fullText.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(typewriterInterval);
+      }
+    }, 80); // 80ms per character (faster)
+
+    // Start fade out after 3 seconds (giving more time for typing)
     const timer = setTimeout(() => {
       setFadeOut(true);
-    }, 2500);
+    }, 2000);
 
-    return () => clearTimeout(timer);
-  }, []);
+    return () => {
+      clearInterval(typewriterInterval);
+      clearTimeout(timer);
+    };
+  }, [fullText]);
 
   return (
     <div
@@ -52,12 +68,13 @@ export function SaveTheDateLoader() {
           </div>
         </div>
 
-        {/* Main Text */}
-        <div className="space-y-4 animate-fade-in-up">
-          <h1 className="font-serif text-6xl md:text-7xl text-primary-600 font-bold tracking-wide">
-            Save the Date
+        {/* Main Text with Typewriter Effect */}
+        <div className="space-y-6">
+          <h1 className="font-script text-7xl md:text-9xl text-primary-600">
+            {displayedText}
+            <span className="animate-blink">|</span>
           </h1>
-          <div className="flex items-center justify-center gap-4">
+          <div className="flex items-center justify-center gap-4 opacity-0 animate-fade-in-delayed">
             <div className="h-px w-16 bg-primary-300"></div>
             <svg
               className="w-5 h-5 text-primary-400"
@@ -68,13 +85,6 @@ export function SaveTheDateLoader() {
             </svg>
             <div className="h-px w-16 bg-primary-300"></div>
           </div>
-        </div>
-
-        {/* Loading Animation */}
-        <div className="flex justify-center gap-2 animate-fade-in-delayed">
-          <div className="w-2 h-2 bg-primary-400 rounded-full animate-bounce"></div>
-          <div className="w-2 h-2 bg-primary-400 rounded-full animate-bounce [animation-delay:0.2s]"></div>
-          <div className="w-2 h-2 bg-primary-400 rounded-full animate-bounce [animation-delay:0.4s]"></div>
         </div>
       </div>
     </div>

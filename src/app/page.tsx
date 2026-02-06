@@ -13,15 +13,15 @@ export default function Home() {
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
-    // Hide loader after 3.5 seconds (loader fades at 2.5s)
+    // Hide loader after 4 seconds (loader fades at 3s)
     const loaderTimer = setTimeout(() => {
       setIsLoading(false);
-    }, 3500);
+    }, 4000);
 
     // Show content with slight delay for smooth transition
     const contentTimer = setTimeout(() => {
       setShowContent(true);
-    }, 3000);
+    }, 3500);
 
     return () => {
       clearTimeout(loaderTimer);
